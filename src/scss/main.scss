@@ -1,0 +1,22 @@
+// Default variable overrides
+$primary: #FDC000;
+
+// Required
+@import "../../node_modules/bootstrap/scss/functions";
+@import "../../node_modules/bootstrap/scss/variables";
+@import "../../node_modules/bootstrap/scss/mixins";
+
+// 이런 theme-color는 이미 정의가 되어있는데 variables안에 있음, 저기중 한개라도 재정의하지 않는다면 variables import 이후에 써야하지만 모두 다 재정의 한다면 !default가 있기때문에 variables import하기 전에 써야함(import보다 윗줄에)
+/*
+$theme-colors: (
+  "primary":    $primary,
+  "secondary":  $secondary,
+  "success":    $success,
+  "info":       $info,
+  "warning":    $warning,
+  "danger":     $danger,
+  "light":      $light,
+  "dark":       $dark
+);
+*/
+@import "../../node_modules/bootstrap/scss/bootstrap";
