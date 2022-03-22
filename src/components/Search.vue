@@ -40,7 +40,6 @@
 // option value="" value값 비워두고 option 태그 안에 값을 써주면 default로 선택되어있는거와 같은 효과?
 
 <script>
-import axios from 'axios'
 
 export default {
   data() {
@@ -75,9 +74,15 @@ export default {
   methods: {
     async apply() {   // 비동기로 요청해야 하기 때문에 async (데이터처리하는데 시간이 걸려서)
       // Search movies...
-      const OMDB_API_KEY = '7035c60c'
-      const res = await axios.get(`https://www.omdbapi.com/?apikey=${OMDB_API_KEY}&s=${this.title}&type=${this.type}&y=${this.year}&page=1`) // https로 수정
-      console.log(res)
+
+      // movie라는 이름은 store/index.js에서 지정한 이름 -> hello: movie로 바뀌면 경로도 hello/searchMovies로 변경되야함
+      this.$store.dispatch('movie/searchMovies', {
+        // v-model로 위에서 연결된 filters의 데이터들을 사용할 수 있게 this로 연결해서 store의 searchMovies actions에 전달
+        title: this.title,
+        type: this.type,
+        number: this.number,
+        year: this.year
+      })
     }
   }
 }
