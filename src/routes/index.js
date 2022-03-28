@@ -15,7 +15,7 @@ export default createRouter({
       component: Home   // 그 페이지에 접근했을 때 실행되는 컴포넌트
     },
     {
-      path: '/movie',
+      path: '/movie/:id',
       component: Movie
     },
     {
