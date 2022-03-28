@@ -5,6 +5,6 @@ export default {
     email: 'mandue@mandue.com',
     blog: 'github.com/jcruzer',
     phone: '+82-10-1234-5678',
-    image: '../assets/logo.png'
+    image: 'https://github.com/jcruzer/vue3-movie-app/blob/master/src/assets/logo.png?raw=true'
   })
 }
