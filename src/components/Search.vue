@@ -24,12 +24,12 @@
           {{ item }}
         </option>
       </select>
-      <button
-        class="btn btn-primary"
-        @click="apply">
-        Apply
-      </button>
     </div>
+    <button
+      class="btn btn-primary"
+      @click="apply">
+      Apply
+    </button>
   </div>
 </template>
 // v-model : 양방향 데이터 바인딩
@@ -89,6 +89,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "~/scss/main";
+
 .container {
   display: flex;
   > * {   // container의 모든 자식요소 선택자
@@ -113,6 +115,24 @@ export default {
     height: 50px;
     font-weight: 700;
     flex-shrink: 0;   // 가로너비가 지정된 너비보다 줄어드는것을 방지
+  }
+  
+  @include media-breakpoint-down(lg) {
+    display: block;   // Large 사이즈보다 작아지면 display: flex(수평) -> block(수직)
+    input {
+      margin-right: 0;
+      margin-bottom: 10px;
+    }
+    .selects {
+      margin-right: 0;
+      margin-bottom: 10px;
+      select {
+        width: 100%;
+      }
+    }
+    .btn {
+      width: 100%;
+    }
   }
 }
 </style>
