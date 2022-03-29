@@ -9,6 +9,9 @@ export default createRouter({
   // Hash모드, History모드 사용 가능
   // https://google.com/#/search 저런식으로 #/ 사용, 지정된페이지 아닐때 404에러페이지 띄우려고 사용
   history: createWebHashHistory(),
+  scrollBehavior() {
+    return { top: 0 }
+  },
   // routes는 각 page들을 말함
   routes: [
     {

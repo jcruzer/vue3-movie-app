@@ -4,6 +4,8 @@ import _uniqBy from 'lodash/uniqBy'
 // Store의 Mutations 실행할때는 .commit() 메소드
 // Store의 Actions 실핼할때는 .dispatch() 메소드 사용
 
+const _defaultMessage = 'Search for the movie title~'
+
 export default {
   // module! / movie.js가 하나의 store에서 모듈화 되어서 사용될 수 있다고 알려주는 요소
   namespaced: true, 
@@ -11,7 +13,7 @@ export default {
   state: function () {   // 리턴만 해서 화살표함수로 축약가능
     return {
       movies: [],
-      message: 'Search for the movie title~',
+      message: _defaultMessage,
       loading: false,
       theMovie: {}
     }
@@ -35,6 +37,9 @@ export default {
     },
     resetMovies(state) {
       state.movies = []
+      state.message = _defaultMessage
+      state.loading = false
+
     }
   },
   // 데이터 직접적 수정 불가, 비동기로 동작

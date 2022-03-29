@@ -78,6 +78,8 @@
 // Rating정보의 Source, Value를 객체구조분해로 가져와서 : 사용해서 이름지정함
 
 <script>
+import { mapState } from 'vuex'
+//import { mapActions } from 'vuex'
 import Loader from '~/components/Loader'
 
 export default {
@@ -90,21 +92,26 @@ export default {
     }
   },
   computed: {
-    theMovie() {
-      return this.$store.state.movie.theMovie
-    },
-    loading() {
-      return this.$store.state.movie.loading
-    }
+    ...mapState('movie', [
+      'theMovie',
+      'loading'
+    ])
   },
   created() {
     console.log(this.$route)
     this.$store.dispatch('movie/searchMovieWithId', {
+      //this.searchMovieWithId({
       // movie/tt~~ 고유한 영화 id / route/index.js에서 쓰는 id
       id: this.$route.params.id
     })
   },
   methods: {
+    /*
+    // Actions나 Mutations는 함수들이라 직관성이 조금 떨어질수도, 사용방법은 동일
+    ...mapActions('movie', [
+      'searchMovieWithId'
+    ]),
+    */
     requestDiffSizeImage(url, size = 700) {
       if (!url || url === 'N/A') {
         this.imageLoading = false

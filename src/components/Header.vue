@@ -26,7 +26,9 @@
 </template>
 
 <script>
+import {mapState} from 'vuex'
 import Logo from '~/components/Logo'
+
 export default {
   components: {
     Logo
@@ -51,15 +53,18 @@ export default {
     }
   },
   computed: {
-    image() {
-      return this.$store.state.about.image
-    },
-    name() {
-      return this.$store.state.about.name
-    }
+    ...mapState('about', [
+      'image',
+      'name'
+    ])
   },
   methods: {
     isMatch(path) {
+      /*
+      // computed에서 mapState로 가져온 데이터들을 여기서도 사용 가능
+      this.image
+      this.message
+      */
       if(!path) return false
       console.log(this.$route)    
       return path.test(this.$route.fullPath) // route객체에서 제공하는 경로를 이용
@@ -74,7 +79,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "~/scss/main";
 
 header {
     height: 70px;

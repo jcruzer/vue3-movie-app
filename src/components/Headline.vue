@@ -15,21 +15,20 @@
 // html css js로만 할땐 inner로 가운데 정렬했는데 bootstrap사용하면 .container 클래스 하나로 바로 적용 가능
 
 <style lang="scss" scoped>
-@import "~/scss/main";
-  .container {
-    padding-top: 40px;
-  }
+.container {
+  padding-top: 40px;
+}
 
-  h1 {
-    line-height: 1;
-    font-family: "Oswald", sans-serif;
-    font-size: 80px;
-    span {
-      color: $primary
-    }
+h1 {
+  line-height: 1;
+  font-family: "Oswald", sans-serif;
+  font-size: 80px;
+  span {
+    color: $primary
   }
-  P {
-    margin: 30px 0;
-    color: $gray-600;
-  }
+}
+P {
+  margin: 30px 0;
+  color: $gray-600;
+}
 </style>

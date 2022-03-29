@@ -89,8 +89,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "~/scss/main";
-
 .container {
   display: flex;
   > * {   // container의 모든 자식요소 선택자

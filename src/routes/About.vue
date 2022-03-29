@@ -18,7 +18,9 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import Loader from '~/components/Loader'
+
 export default {
   components: {
     Loader
@@ -29,6 +31,23 @@ export default {
     }
   },
   computed: {
+    // computed에서 다른 데이터들도 사용할 수도 있으니 공식문서처럼 사용보단 아래처럼 전개연산자 이용해서 추가하기
+    ...mapState('about', [
+      'image',
+      'name',
+      'email',
+      'blog',
+      'phone'
+    ]),
+    // 추가적으로 다른 store의 state 가져오려면 또 사용
+    /*
+    ...mapState('movie', [
+      'movies',
+      'message',
+      'loading'
+    ])*/
+  },  
+    /*
     image() {
       return this.$store.state.about.image
     },
@@ -44,7 +63,7 @@ export default {
     phone() {
       return this.$store.state.about.phone
     }
-  },
+  },*/
   mounted() {     // 라이프사이클은 비동기로 실행 불가(async mounted 불가) 그래서 methods들을 비동기로 만들어서 mounted에서는 호출만
     this.init()
   },
@@ -58,7 +77,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "~/scss/main";
 .about {
   text-align: center;
   .photo {

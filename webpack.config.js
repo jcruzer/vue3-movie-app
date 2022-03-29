@@ -40,7 +40,12 @@ module.exports = {
           'style-loader',
           'css-loader',
           'postcss-loader',
-          'sass-loader'
+          {   // 모든 컴포넌트 전역에 import 없이 scss 사용하기
+            loader: 'sass-loader',
+            options: {
+              additionalData: '@import "~/scss/main";'
+            }
+          }
         ]
       },
       {
@@ -52,7 +57,8 @@ module.exports = {
       {
         test: /\.(png|jpe?g|gif|webp)$/,
         use: 'file-loader'
-      }
+      },
+
     ]
   },
 
