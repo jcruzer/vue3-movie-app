@@ -87,10 +87,15 @@ export default {
             })
           }
         }
-      } catch (message){
+      //} catch (error){
+      } catch ( {message} ){
+        // error 객체에서 message라는 데이터만 객체구조분해로 뽑음
+        
+        // netlify-functions에서 반환하는 메세지 자체는 문자데이터지만(body: error.message) error라는 객체 안에 있는 에러메세지, 실제로 네트워크를 거쳐서 반환되기 때문에(객체 -> 문자) ?? 몬말
         commit('updateState', {
           // message: message
           movies: [],   // 에러 발생 시 초기화
+          //message: error.message
           message
         })
       } finally {
@@ -124,7 +129,10 @@ export default {
   }
 }
 
-function _fetchMovie(payload) {  // 현재 파일에서만 사용되는 함수라 앞에 _씀
+
+async function _fetchMovie(payload) {  // 현재 파일에서만 사용되는 함수라 앞에 _씀
+  /*
+function _fetchMovie(payload) {  // 현재 파일에서만 사용되는 
   const { title, type, year, page, id } = payload
   const OMDB_API_KEY = '7035c60c'
   const url = id
@@ -144,4 +152,8 @@ function _fetchMovie(payload) {  // 현재 파일에서만 사용되는 함수�
         reject(err.message)
       })
   })
+  */
+  // netlify - functions 사용하면서 functions-movie.js로 이동
+  return await axios.post('/.netlify/functions/movie', payload)
+  // get대신 post를 쓴 이유 : get은 쿼리스트링(?title="~~") 사용했는데 post는 body라는 속성에 담아서 payload라는 인수로 전달
 } 
