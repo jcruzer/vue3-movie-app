@@ -1,10 +1,13 @@
 const axios = require('axios')
+//const OMDB_API_KEY = process.env.OMDB_API_KEY
+// 환경변수(.env)에서 저장된 api-key를 가져옴 -> 객체구조분해로 단순화
+const { OMDB_API_KEY } = process.env
 
 exports.handler = async function (event) {
   console.log(event)
   const payload = JSON.parse(event.body)    // 문자데이터로 변환해서 주고받는데 그걸 다시 객체데이터로 변환
   const { title, type, year, page, id } = payload
-  const OMDB_API_KEY = '7035c60c'
+  //const OMDB_API_KEY = '7035c60c'
   const url = id
   ? `https://www.omdbapi.com/?apikey=${OMDB_API_KEY}&i=${id}`
   : `https://www.omdbapi.com/?apikey=${OMDB_API_KEY}&s=${title}&type=${type}&y=${year}&page=${page}`
