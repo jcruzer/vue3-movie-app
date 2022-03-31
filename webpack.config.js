@@ -44,7 +44,7 @@ module.exports = {
           {   // 모든 컴포넌트 전역에 import 없이 scss 사용하기
             loader: 'sass-loader',
             options: {
-              additionalData: '@import "~/scss/main";'
+              additionalData: `@import "~/scss/main";`
             }
           }
         ]
